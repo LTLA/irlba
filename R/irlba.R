@@ -376,6 +376,23 @@ Use `set.seed` first for reproducibility.")
       if (length(center) != ncol(A)) stop("the centering vector length must match the number of matrix columns")
       CENTER <- as.double(center)
     }
+  
+    cat("Checkpoint 1, A:", digest::digest(A), "\n")
+    cat("Checkpoint 1, k:", digest::digest(k), "\n")
+    cat("Checkpoint 1, v:", digest::digest(v), "\n")
+    cat("Checkpoint 1, work:", digest::digest(work), "\n")
+    cat("Checkpoint 1, maxit:", digest::digest(maxit), "\n")
+    cat("Checkpoint 1, tol:", digest::digest(tol), "\n")
+    cat("Checkpoint 1, eps2:", digest::digest(eps2), "\n")
+    cat("Checkpoint 1, SP:", digest::digest(SP), "\n")
+    cat("Checkpoint 1, RESTART:", digest::digest(RESTART), "\n")
+    cat("Checkpoint 1, RV:", digest::digest(RV), "\n")
+    cat("Checkpoint 1, RW:", digest::digest(RW), "\n")
+    cat("Checkpoint 1, RS:", digest::digest(RS), "\n")
+    cat("Checkpoint 1, SCALE:", digest::digest(SCALE), "\n")
+    cat("Checkpoint 1, SHIFT:", digest::digest(SHIFT), "\n")
+    cat("Checkpoint 1, CENTER:", digest::digest(CENTER), "\n")
+    cat("Checkpoint 1, svtol:", digest::digest(svtol), "\n")
     ans <- .Call(C_IRLB, A, as.integer(k), as.double(v), as.integer(work),
                  as.integer(maxit), as.double(tol), as.double(eps2), as.integer(SP),
                  as.integer(RESTART), RV, RW, RS, SCALE, SHIFT, CENTER, as.double(svtol))
@@ -461,6 +478,15 @@ Use `set.seed` first for reproducibility.")
 # ---------------------------------------------------------------------
   while (iter <= maxit)
   {
+    cat("Checkpoint ", iter, ", A:", digest::digest(A), "\n")
+    cat("Checkpoint ", iter, ", B:", digest::digest(B), "\n")
+    cat("Checkpoint ", iter, ", Bsz:", digest::digest(Bsz), "\n")
+    cat("Checkpoint ", iter, ", eps23:", digest::digest(eps23), "\n")
+    cat("Checkpoint ", iter, ", mprod:", digest::digest(mprod), "\n")
+    cat("Checkpoint ", iter, ", R_F:", digest::digest(R_F), "\n")
+    cat("Checkpoint ", iter, ", Smax:", digest::digest(Smax), "\n")
+    cat("Checkpoint ", iter, ", Smin:", digest::digest(Smin), "\n")
+    cat("Checkpoint ", iter, ", lastsv:", digest::digest(lastsv), "\n")
 # ---------------------------------------------------------------------
 # Compute the Lanczos bidiagonal decomposition:
 # such that AV  = WB
